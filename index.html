@@ -11,22 +11,33 @@
       padding: 0;
       box-sizing: border-box;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: background 0.3s, color 0.3s;
     }
 
     body {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       background: #ffffff;
       color: #111;
     }
 
+    body.dark {
+      background: #111;
+      color: #f5f5f5;
+    }
+
     header, footer {
-      padding: 20px 40px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
-      font-size: 14px;
+      align-items: center;
+      font-size: 13px;
       color: #555;
+    }
+
+    body.dark header, body.dark footer {
+      color: #aaa;
     }
 
     header {
@@ -35,6 +46,15 @@
 
     footer {
       border-top: 1px solid #eee;
+      justify-content: center;
+    }
+
+    body.dark header {
+      border-color: #333;
+    }
+
+    body.dark footer {
+      border-color: #333;
     }
 
     main {
@@ -43,14 +63,23 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      padding: 20px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
       font-weight: 500;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-      min-height: 1.5em;
+      line-height: 1.4;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeScale 0.8s ease forwards;
+    }
+
+    @keyframes fadeScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .highlight {
@@ -58,10 +87,32 @@
       font-weight: bold;
     }
 
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
+    body.dark .highlight {
+      color: #ff4d4d;
+    }
+
+    .toggle {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 14px;
+      color: inherit;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .gmail {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .gmail:hover {
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -70,7 +121,21 @@
 
   <header>
     <div>krishna.rocks</div>
-    <div>Coming Soon</div>
+
+    <div class="right">
+      <span>Coming Soon</span>
+
+      <a href="mailto:kv787848@gmail.com">
+        <svg class="gmail" viewBox="0 0 24 24">
+          <path fill="#EA4335" d="M12 13.065L0 6.75V18h24V6.75z"/>
+          <path fill="#FBBC05" d="M12 13.065l12-6.315V6L12 12 0 6v.75z"/>
+          <path fill="#34A853" d="M0 6v12l12-6z"/>
+          <path fill="#4285F4" d="M24 6v12l-12-6z"/>
+        </svg>
+      </a>
+
+      <button class="toggle" onclick="toggleMode()">🌙</button>
+    </div>
   </header>
 
   <main>
@@ -78,8 +143,7 @@
   </main>
 
   <footer>
-    <div>© 2026</div>
-    <div>Built with ❤️ by Krishna</div>
+    <div>Made with ❤️ by Krishna</div>
   </footer>
 
   <script>
@@ -113,6 +177,10 @@
 
       typeText();
     });
+
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+    }
   </script>
 
 </body>
