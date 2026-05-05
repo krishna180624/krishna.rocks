@@ -1,96 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna.Rocks | Professional</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-            background-image: 
-                radial-gradient(circle at 20% 30%, #1e1b4b 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, #2e1065 0%, transparent 40%);
-            color: #ffffff;
-            overflow: hidden;
-        }
+  <meta charset="UTF-8">
+  <title>krishna.rocks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Smooth Entry Animation */
-        .fade-in {
-            animation: fadeInUp 1.2s ease-out forwards;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      color: #111;
+    }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+    header, footer {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #555;
+    }
 
-        /* Animated Hover Effect for the Name */
-        .gradient-text {
-            background: linear-gradient(90deg, #8b5cf6, #d946ef, #8b5cf6);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientMove 4s linear infinite;
-        }
+    header {
+      border-bottom: 1px solid #eee;
+    }
 
-        @keyframes gradientMove {
-            to { background-position: 200% center; }
-        }
-    </style>
+    footer {
+      border-top: 1px solid #eee;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      min-height: 1.5em;
+    }
+
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-6">
 
-    <div class="fixed inset-0 pointer-events-none opacity-20">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600 rounded-full mix-blend-multiply filter blur-[128px]"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-600 rounded-full mix-blend-multiply filter blur-[128px]"></div>
-    </div>
+<body>
 
-    <main class="fade-in glass-card rounded-3xl p-10 md:p-16 max-w-2xl w-full text-center relative z-10">
-        
-        <header>
-            <span class="inline-block px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-bold uppercase tracking-widest mb-6">
-                Now Live
-            </span>
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight leading-tight">
-                Hello. Welcome to <br> 
-                <span class="gradient-text">krishna.rocks</span>
-            </h1>
-            <p class="text-slate-400 text-lg md:text-xl font-light mb-10">
-                Where innovation meets creative expression.
-            </p>
-        </header>
+  <header>
+    <div>krishna.rocks</div>
+    <div>Coming Soon</div>
+  </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-            <a href="#" class="flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-4 transition-all duration-300 group">
-                <span class="text-white font-semibold">View Portfolio</span>
-                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-            <a href="mailto:hello@krishna.rocks" class="flex items-center justify-center gap-3 bg-violet-600 hover:bg-violet-500 rounded-2xl p-4 transition-all duration-300 shadow-lg shadow-violet-600/20">
-                <span class="text-white font-semibold">Contact Me</span>
-            </a>
-        </div>
+  <main>
+    <h1 id="typing"></h1>
+  </main>
 
-        <div class="pt-8 border-t border-white/5">
-            <p class="text-slate-500 text-xs uppercase tracking-[0.2em] font-medium">
-                Digital Presence • © 2026
-            </p>
-        </div>
-    </main>
+  <footer>
+    <div>© 2026</div>
+    <div>Built with ❤️ by Krishna</div>
+  </footer>
 
-    <p class="mt-8 text-slate-600 text-sm italic font-light opacity-50">
-        Professional Digital Space
-    </p>
+  <script>
+    const text = "Hey welcome to my domain ";
+    const domain = "krishna.rocks";
+    const speed = 60;
+
+    let i = 0;
+    let j = 0;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const target = document.getElementById("typing");
+
+      function typeText() {
+        if (i < text.length) {
+          target.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeText, speed);
+        } else {
+          typeDomain();
+        }
+      }
+
+      function typeDomain() {
+        if (j < domain.length) {
+          target.innerHTML += "<span class='highlight'>" + domain.charAt(j) + "</span>";
+          j++;
+          setTimeout(typeDomain, speed);
+        }
+      }
+
+      typeText();
+    });
+  </script>
 
 </body>
 </html>
